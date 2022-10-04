@@ -4,20 +4,15 @@ import PropTypes from "prop-types";
 
 const TodoListItem = ({ todo, onRemoveTodo })=>{
     return (
-        <>
-
-            <li className = {style.ListItem} >
-                <span>{todo.title }</span>
-                <button className={style.Button} type="button" onClick={() => onRemoveTodo(todo.id)}>
-
-            <li>
-                <span>{todo.title}</span>
-                <button type="button" onClick={() => onRemoveTodo(todo.id)}>
-
-                    Remove
-                </button>
-            </li> 
-        </>
+        <div>
+        <li className={style.ListItem}>
+                <span className={style.item}>{todo.title}</span>
+                <button className={style.btn} type="button" onClick={() =>
+                    onRemoveTodo(todo.id)}>
+                Remove
+            </button>
+        </li>
+        </div>
     );
 }
 
