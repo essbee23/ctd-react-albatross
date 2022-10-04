@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 
 const TodoList = ({ todoList, onRemoveTodo }) => {
   return (
+    <div>
     <ol className = {style.ListBox}>
       {todoList.map((todo) => (
         <TodoListItem
@@ -14,6 +15,7 @@ const TodoList = ({ todoList, onRemoveTodo }) => {
           onRemoveTodo={onRemoveTodo} />
       ))}
     </ol>
+    </div>
   );
 };
 
