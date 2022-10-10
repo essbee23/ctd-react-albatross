@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import AddTodoForm from "./components/AddTodoForm";
 import TodoList from "./components/TodoList";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import style from "./App.module.css"
 
 
@@ -88,7 +88,7 @@ function App() {
 
   
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route
           path="/"
@@ -117,7 +117,7 @@ function App() {
         </Route>
         
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
   );
 };
 
