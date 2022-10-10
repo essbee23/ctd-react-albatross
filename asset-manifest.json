@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/essbee23/ctd-react-albatross/static/css/main.86805869.css",
-    "main.js": "/essbee23/ctd-react-albatross/static/js/main.d3871407.js",
-    "index.html": "/essbee23/ctd-react-albatross/index.html",
-    "main.86805869.css.map": "/essbee23/ctd-react-albatross/static/css/main.86805869.css.map",
-    "main.d3871407.js.map": "/essbee23/ctd-react-albatross/static/js/main.d3871407.js.map"
+    "main.css": "/ctd-react-albatross/static/css/main.86805869.css",
+    "main.js": "/ctd-react-albatross/static/js/main.116972ed.js",
+    "index.html": "/ctd-react-albatross/index.html",
+    "main.86805869.css.map": "/ctd-react-albatross/static/css/main.86805869.css.map",
+    "main.116972ed.js.map": "/ctd-react-albatross/static/js/main.116972ed.js.map"
   },
   "entrypoints": [
     "static/css/main.86805869.css",
-    "static/js/main.d3871407.js"
+    "static/js/main.116972ed.js"
   ]
 }
