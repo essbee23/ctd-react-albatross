@@ -1,20 +1,44 @@
+@import url('https://fonts.googleapis.com/css?family=Walter+Turncoat');
+
+*{
+    font-family: "Walter Turncoat";
+    font-size: 12px;
+    color:#2a2438;
+    background-image: url(https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimage.freepik.com%2Ffree-photo%2Ftop-view-desk-blank-clipboard_23-2148219289.jpg&f=1&nofb=1&ipt=cf1a5849232d33a0f05e357f8cdac680ada9e5fbdf3eccc821912b0d2473638d&ipo=images);
+    background-size:100vw 120vh;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
 h1{
     color:#2a2438;
-    text-align: center;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 36px;
+    /* bold handwriting font, adjust padding*/
 }
 
-.Loading{
-    color:#2a2438;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-}
+/* .Loading{
+
+} */
+
+
 
 .Body{
-    background-color:#f8bf8a;
-    border: 1px solid #8f8787;
-    width: fit-content;
-    padding-right: 5px;
-    padding-bottom: 5px;
-    padding-top: 5px;
+    display: grid;
+    grid-template-rows: max-content;
+    align-items: center;
+    justify-items: center;
+    padding-top: 10vh;
+    /* adjust top and bottom padding, maybe text wrap?, redo grid or do flex */
+}
+
+
+
+@media only screen 
+   and (max-width : 1100px) {
+   *{
+    background-image: url(https://freepngimg.com/download/clipboard/177373-clipboard-free-hq-image.png); 
+    height: auto;
+    }
 
 }

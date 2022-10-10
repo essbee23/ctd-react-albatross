@@ -1,7 +1,41 @@
 .ListBox{
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    width: fit-content;
-    padding-right: 5px;
-    padding-bottom: 5px;
-    padding-top: 5px;
+width: 500px;
+padding: 10px;
+text-align: left;
+list-style: none;
 }
+
+
+
+@media only screen 
+   and (min-width : 751px) and (max-width : 1180px){
+      .ListBox{
+         width:450px;
+         height: auto;
+      }
+   }
+
+@media only screen 
+   and (min-width : 601px) and (max-width : 750px){
+      .ListBox{
+         width: 300px;
+         height: auto;
+      }
+   }
+
+@media only screen 
+   and (min-width : 350px) and (max-width : 600px){
+      .ListBox{
+         width:300px;
+         height:auto;
+      }
+   }
+
+@media only screen 
+   and (max-width : 389px){
+      .ListBox{
+         width:240px;
+         height:auto;
+      }
+   }
+

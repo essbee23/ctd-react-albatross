@@ -1,13 +1,11 @@
 .AddButton{
-    color:#2a2438;
+    color:rgba(42, 36, 56, 0.6);
     font-weight: bolder;
-    border-width: 1px;
-    margin-left: 2px;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    border: none;
+    box-shadow: 2px 2px gray;
 }
 
-.InputField{
-    border-width:10px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+.AddButton:active {
+    transform: translateY(2px);
 }
 
