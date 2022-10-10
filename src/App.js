@@ -99,7 +99,6 @@ function App() {
               <AddTodoForm onAddTodo={addTodo} />
               {isLoading ? (
                 <p className={style.Loading}>
-                  <iframe src="https://giphy.com/embed/HdmvfCeOSzG12Non0P" width="280" height="280" frameBorder="0"></iframe>
                 </p>
                 ) :
                 (<TodoList todoList={todoList} onRemoveTodo={removeTodo} />)
