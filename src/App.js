@@ -1,9 +1,8 @@
-import React, {useEffect, useState} from 'react';
-import AddTodoForm from './components/AddTodoForm';
-import TodoList from './components/TodoList';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import React, {useEffect, useState} from "react";
+import AddTodoForm from "./components/AddTodoForm";
+import TodoList from "./components/TodoList";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import style from "./App.module.css"
-
 
 
 function App() {
@@ -11,14 +10,20 @@ function App() {
   const [todoList, setTodoList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
+ 
+  useEffect(() => {
+    if (!isLoading) {
+      localStorage.setItem("savedTodoList", JSON.stringify(todoList));
+    }
+  }, [isLoading, todoList]);
+
+ 
   useEffect(() => {
     fetch(
       `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default?view=Grid%20view&sort[0][field]=Title&sort[0][direction]=asc`,
       {
         method: "GET",        
-        headers: {
-          Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
-        },
+        headers: { Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`},
       }
     )
       .then((resp) => resp.json())
@@ -26,11 +31,11 @@ function App() {
       
         data.records.sort((objectA, objectB) => {
           if (objectA.fields.Title < objectB.fields.Title) {
-            return 1;
+            return -1;
           } else if (objectA.fields.Title === objectB.fields.Title) {
             return 0;
           } else {
-            return -1;
+            return 1;
           }
         });
 
@@ -43,22 +48,44 @@ function App() {
       });
   }, []);
 
-  useEffect(() => {
-    if (!isLoading) {
-      localStorage.setItem("savedTodoList", JSON.stringify(todoList));
+
+  const addTodo = (title) => {
+
+    fetch(
+      `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default`,
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
+          "Content-type": "application/json"
+        },
+        body: JSON.stringify({"fields":{"Title":title.title}})
+
+      }
+    )
+      .then((resp) => resp.json())
+      .then((data) => {
+        setTodoList([...todoList, {id:data.id, title:data.fields.Title}]);
+        console.log(data)
+      })
+	}; 
+
+
+    const removeTodo = (id) => {
+      fetch(
+        `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default/${id}`,
+        {
+          method: "DELETE",
+          headers: {Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`},
+        }
+      )
+        .then((resp) => resp.json())
+        .then((data) => {
+          const filteredList = todoList.filter((data) => data.id !== id)
+          setTodoList(filteredList)
+        });
     }
-  }, [isLoading, todoList]);
-  
 
-  const addTodo = (newTodo) => {
-    setTodoList([...todoList, newTodo])
-  };
-
-  const removeTodo = (id) => {
-    const newTodoList = todoList.filter((todo) =>
-      id !== todo.id);
-    setTodoList(newTodoList)
-  }; 
   
   return (
     <BrowserRouter>
@@ -72,9 +99,9 @@ function App() {
               <AddTodoForm onAddTodo={addTodo} />
               {isLoading ? (
                 <p className={style.Loading}>
-                  Loading...
+                  <iframe src="https://giphy.com/embed/HdmvfCeOSzG12Non0P" width="280" height="280" frameBorder="0"></iframe>
                 </p>
-              ) :
+                ) :
                 (<TodoList todoList={todoList} onRemoveTodo={removeTodo} />)
               }
                 </div>

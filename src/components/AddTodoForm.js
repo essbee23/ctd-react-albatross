@@ -13,15 +13,16 @@ const AddTodoForm = ({ onAddTodo }) => {
 
     const handleAddTodo = (e) => {
         e.preventDefault();
-        onAddTodo({ title: todoTitle, id: Date.now() });
+        onAddTodo({ title: todoTitle });
         setTodoTitle("");
     };
 
     return (
         <div className="form">
         <form onSubmit={handleAddTodo}>
-            <InputWithLabel className={style.InputField}  todoTitle={todoTitle} handleTitleChange={handleTitleChange}>Title</InputWithLabel>
-            <button className={style.AddButton} type="submit">+</button>
+                <InputWithLabel todoTitle={todoTitle} handleTitleChange={handleTitleChange}>Task
+                </InputWithLabel>
+            <button className={style.AddButton} type="submit">Add</button>
             </form>
         </div>
     );
